@@ -1,0 +1,31 @@
+$width: 500px;
+$height: 500px;
+$borderColor: #1a1a1a;
+
+#root {
+  margin: 0 auto;
+  width: $width;
+}
+
+.table {
+  display: table;
+  background: black;
+  height: $height;
+  width: $width;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  border-top: 1px solid $borderColor;
+  border-left: 1px solid $borderColor;
+}
+
+.alive {
+  background: red;
+}
+
+

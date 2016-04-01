@@ -1,0 +1,20 @@
+#root {
+  margin: 0 auto;
+  width: 500px; }
+
+.table {
+  display: table;
+  background: black;
+  height: 500px;
+  width: 500px; }
+
+.row {
+  display: table-row; }
+
+.cell {
+  display: table-cell;
+  border-top: 1px solid #1a1a1a;
+  border-left: 1px solid #1a1a1a; }
+
+.alive {
+  background: red; }
