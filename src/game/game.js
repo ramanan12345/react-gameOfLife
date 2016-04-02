@@ -35,32 +35,79 @@ Game.prototype.generateGrid = function(size) {
 }
 
 Game.prototype.findCell = function(x, y) {
-  return this.grid[y][x]
+  if(this.inBound(x) && this.inBound(y)) {
+    return this.grid[y][x]
+  } 
+
+  return undefined
 }
 
-Game.prototype.inBound = function(x, y) {
-  return y >= 0 && y <= this.size - 1
+Game.prototype.inBound = function(coord) {
+  return coord >= 0 && coord <= this.size - 1
 }
 
-Game.prototype.inBoundX = function(x, y) {
-  return x >= 0 && y <= this.size - 1
+Game.prototype.invert = function(coord) {
+  switch(true) {
+    case coord < 0:
+      return this.size - 1
+    case coord > this.size - 1:
+      return 0
+    default:
+      return coord
+  }
+}
+
+Game.prototype.isAlive = function(cell) {
+  let neighbors = cell.neighbors
+
+  if(cell.alive && neighbors < 2) {
+    return false
+  }
+
+  if(cell.alive && (neighbors === 2 || neighbors === 3)) {
+    return true
+  }
+
+  if(cell.alive && neighbors > 3) {
+    return false
+  }
+
+  if(!cell.alive && neighbors === 3) {
+    return true
+  }
+
+
+  return false
 }
 
 Game.prototype.updateCell = function(x, y) {
-  let cell = this.grid[y][x]
-  cell.neighbors = 0
+  let parentCell = this.findCell(x, y)
+  parentCell.neighbors = 0
 
-  NEIGHBOR_COORDS.forEach(coord => {
-    let cell = findCell(coord[y + y][x + x])
-  })
+  for(let i = 0; i < NEIGHBOR_COORDS.length; ++i) {
+    let dy = this.invert(y + NEIGHBOR_COORDS[i][0])
+    let dx = this.invert(x + NEIGHBOR_COORDS[i][1])
+    let cell = this.findCell(dx, dy)
+
+    if(cell.alive) {
+      ++parentCell.neighbors
+    }
+  }
+
+  parentCell.alive = this.isAlive(parentCell)
+
+  return parentCell
 }
 
+Game.prototype.updateAllCells = function() {
+  let grid = this.grid
 
-  
+  for(let y = 0; y < grid.length; ++y) {
+    let row = grid[i]
+    for(let x = 0; x < row.length; ++x) {
+      this.updateCell(x, y)
+    }
+  }
+}
 
-
-
-
-
-export default Game
-
+export { Cell, Game } 
