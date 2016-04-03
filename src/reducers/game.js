@@ -1,12 +1,12 @@
 import { Game } from '../game/game'
 
-let game = new Game(100)
+let gameState = new Game(70)
 
-const grid = (state = game.grid, action) => {
+const game = (state = gameState, action) => {
   switch(action.type) {
     default: 
       return state
   }
 }
 
-export default grid
+export default game

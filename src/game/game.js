@@ -3,7 +3,6 @@ const NEIGHBOR_COORDS = [
   [-1, 0],
   [-1, 1],
   [0, -1],
-  [0, 0],
   [0, 1],
   [1, -1],
   [1, 0],
@@ -11,13 +10,14 @@ const NEIGHBOR_COORDS = [
 ]
 
 function Cell() {
-  this.alive = Math.random() > 0.9
+  this.alive = Math.random() > 0.5
   this.neighbors = 0
 }
 
 function Game(size) {
   this.size = size
   this.grid = this.generateGrid(size)
+  this.generations = 0
 }
 
 Game.prototype.generateGrid = function(size) {
@@ -43,7 +43,7 @@ Game.prototype.findCell = function(x, y) {
 }
 
 Game.prototype.inBound = function(coord) {
-  return coord >= 0 && coord <= this.size - 1
+  return coord >= 0 && coord < this.size 
 }
 
 Game.prototype.invert = function(coord) {
@@ -57,27 +57,19 @@ Game.prototype.invert = function(coord) {
   }
 }
 
-Game.prototype.isAlive = function(cell) {
+Game.prototype.isAlive = function(x, y) {
+  let cell = this.findCell(x, y)
   let neighbors = cell.neighbors
 
   if(cell.alive && neighbors < 2) {
-    return false
-  }
-
-  if(cell.alive && (neighbors === 2 || neighbors === 3)) {
-    return true
-  }
-
-  if(cell.alive && neighbors > 3) {
-    return false
-  }
-
-  if(!cell.alive && neighbors === 3) {
-    return true
-  }
-
-
-  return false
+     cell.alive = false
+  } else if(cell.alive && (neighbors === 2 || neighbors === 3)) {
+     cell.alive = true
+  } else if(cell.alive && neighbors > 3) {
+    cell.alive = false
+  } else if(!cell.alive && neighbors === 3) {
+    cell.alive = true
+  } 
 }
 
 Game.prototype.updateCell = function(x, y) {
@@ -93,21 +85,29 @@ Game.prototype.updateCell = function(x, y) {
       ++parentCell.neighbors
     }
   }
-
-  parentCell.alive = this.isAlive(parentCell)
-
-  return parentCell
 }
 
-Game.prototype.updateAllCells = function() {
-  let grid = this.grid
 
-  for(let y = 0; y < grid.length; ++y) {
-    let row = grid[i]
-    for(let x = 0; x < row.length; ++x) {
+Game.prototype.updateAllCells = function() {
+  for(let y = 0; y < this.size; ++y) {
+    for(let x = 0; x < this.size; ++x) {
       this.updateCell(x, y)
     }
   }
+}
+
+Game.prototype.updateState = function() {
+  for(let y = 0; y < this.size; ++y) {
+    for(let x = 0; x < this.size; ++x) {
+      this.isAlive(x, y)
+    }
+  }
+}
+
+Game.prototype.update = function() {
+  this.updateAllCells()
+  this.updateState()
+  ++this.generations
 }
 
 export { Cell, Game } 

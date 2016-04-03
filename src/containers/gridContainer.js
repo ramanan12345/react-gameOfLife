@@ -4,7 +4,7 @@ import Grid from '../components/grid'
 
 const mapStateToProps = (state) => {
   return {
-    grid: state.grid
+    game: state.game
   }
 }
 
