@@ -60,7 +60,7 @@ class Grid extends Component {
 
       return (
         <div>
-          <div>{this.state.generations}</div>
+          <div><span>{`Generations: ${this.state.generations}`}</span></div>
           <div
             className='table'
           >

@@ -20487,7 +20487,11 @@ var Grid = function (_Component) {
         _react2.default.createElement(
           'div',
           null,
-          this.state.generations
+          _react2.default.createElement(
+            'span',
+            null,
+            'Generations: ' + this.state.generations
+          )
         ),
         _react2.default.createElement(
           'div',
@@ -20693,7 +20697,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _game = require('../game/game');
 
-var gameState = new _game.Game(70);
+var gameState = new _game.Game(50);
 
 var game = function game() {
   var state = arguments.length <= 0 || arguments[0] === undefined ? gameState : arguments[0];
