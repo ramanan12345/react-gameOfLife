@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
+import raf from 'raf'
 
 class Grid extends Component {
   constructor(props) {
@@ -21,18 +22,18 @@ class Grid extends Component {
     const { game } = this.props
     const { update } = game
 
-    let intervalId = setInterval(() => {
+    let tick = () => {
       update.call(game)
 
       this.setState({
         grid: game.grid,
         generations: game.generations
       })
-    }, 0)
 
-    this.setState({
-      intervalId: intervalId
-    })
+      raf(tick)
+    }
+
+    raf(tick)
   }
 
   render() {
@@ -58,10 +59,13 @@ class Grid extends Component {
       )})
 
       return (
-        <div
-          className='table'
-        >
-          {_grid}
+        <div>
+          <div>{this.state.generations}</div>
+          <div
+            className='table'
+          >
+            {_grid}
+          </div>
         </div>
       )
   }
