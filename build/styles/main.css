@@ -1,13 +1,19 @@
+body {
+  background: black; }
+
+div {
+  color: white; }
+
 #root {
-  width: 700px;
-  height: 75vh;
+  height: 85vh;
+  width: 75%;
+  margin: 0 auto;
   overflow: hidden; }
 
 .table {
   display: table;
   background: black;
-  margin: 0 auto;
-  height: 75vh;
+  height: 85vh;
   width: 100%; }
 
 .row {

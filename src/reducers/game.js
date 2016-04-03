@@ -1,6 +1,6 @@
 import { Game } from '../game/game'
 
-let gameState = new Game(70)
+let gameState = new Game(50)
 
 const game = (state = gameState, action) => {
   switch(action.type) {

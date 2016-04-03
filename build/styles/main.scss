@@ -1,19 +1,27 @@
-$width: 100%;
-$height: 75vh;
+$width: 75%;
+$height: 85vh;
 $borderColor: #1a1a1a;
 
+body {
+  background: black;
+}
+
+div {
+  color: white;
+}
+
 #root {
-  width: 700px;
   height: $height;
+  width: $width;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 .table {
   display: table;
   background: black;
-  margin: 0 auto;
   height: $height;
-  width: $width;
+  width: 100%;
 }
 
 .row {
