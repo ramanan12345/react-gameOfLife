@@ -8,19 +8,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addLiveCell: function() {
-      console.log('hello')
-
-    }
-  }
-}
-
-
 const GridContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Game)
 
 export default GridContainer
