@@ -9,7 +9,7 @@ const Row = ({ row, addCell }) => (
          key={i} 
           className={classnames('cell', { alive: cell.alive })}
           onClick={() => {
-            cell.alive = true
+            cell.alive = !cell.alive
             addCell()
           }}
         >
