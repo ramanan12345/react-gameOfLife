@@ -26,13 +26,12 @@ button:hover {
 
 button {
   cursor: pointer;
-  padding: 1em 1.5em 1em 1.5em;
   background: $borderColor;
   color: white;
   border: 1px solid $borderColor;
   border-right: 1px solid blue;
   border-left: 1px solid blue;
-  font-size: 16px;
+  padding: 0.5em;
 }
 
 .table {
