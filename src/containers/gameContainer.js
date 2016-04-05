@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Grid from '../components/grid'
+import Game from '../components/game'
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +10,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    start: function() {
+    addLiveCell: function() {
+      console.log('hello')
+
     }
   }
 }
@@ -19,6 +21,6 @@ const mapDispatchToProps = (dispatch) => {
 const GridContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Grid)
+)(Game)
 
 export default GridContainer

@@ -1,5 +1,5 @@
 export const start = () => {
   return {
-    type: 'START'
+    type: 'ADD_LIVE_CELL'
   }
 }

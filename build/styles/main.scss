@@ -2,26 +2,46 @@ $width: 75%;
 $height: 85vh;
 $borderColor: #1a1a1a;
 
+* {
+  outline: none;
+}
+
 body {
   background: black;
 }
 
-div {
-  color: white;
-}
-
 #root {
-  height: $height;
   width: $width;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.generations {
+  color: white;
+}
+
+button:hover {
+  border-bottom: 1px solid white;
+}
+
+button {
+  cursor: pointer;
+  padding: 1em 1.5em 1em 1.5em;
+  background: $borderColor;
+  color: white;
+  border: 1px solid $borderColor;
+  border-right: 1px solid blue;
+  border-left: 1px solid blue;
+  font-size: 16px;
 }
 
 .table {
   display: table;
   background: black;
   height: $height;
-  width: 100%;
+  width: 99%;
+  border-right: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
 }
 
 .row {

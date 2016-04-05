@@ -110,4 +110,24 @@ Game.prototype.update = function() {
   ++this.generations
 }
 
+Game.prototype.clearCell = function(x, y) {
+  let cell = this.findCell(x, y) 
+
+  cell.alive = false
+}
+
+Game.prototype.clear = function() {
+  for(let y = 0; y < this.size; ++y) {
+    for(let x = 0; x < this.size; ++x) {
+      this.clearCell(x, y)
+    }
+  }
+  this.generations = 0
+}
+
+Game.prototype.randomize = function() {
+  this.grid = this.generateGrid(this.size)
+}
+
+
 export { Cell, Game } 

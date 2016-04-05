@@ -1,20 +1,37 @@
+* {
+  outline: none; }
+
 body {
   background: black; }
 
-div {
-  color: white; }
-
 #root {
-  height: 85vh;
   width: 75%;
   margin: 0 auto;
   overflow: hidden; }
+
+.generations {
+  color: white; }
+
+button:hover {
+  border-bottom: 1px solid white; }
+
+button {
+  cursor: pointer;
+  padding: 1em 1.5em 1em 1.5em;
+  background: #1a1a1a;
+  color: white;
+  border: 1px solid #1a1a1a;
+  border-right: 1px solid blue;
+  border-left: 1px solid blue;
+  font-size: 16px; }
 
 .table {
   display: table;
   background: black;
   height: 85vh;
-  width: 100%; }
+  width: 99%;
+  border-right: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a; }
 
 .row {
   display: table-row; }

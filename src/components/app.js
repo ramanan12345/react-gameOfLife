@@ -1,8 +1,8 @@
 import React from 'react'
-import GridContainer from '../containers/gridContainer'
+import GameContainer from '../containers/gameContainer'
 
 const App = () => (
-  <GridContainer />
+  <GameContainer />
 )
 
 export default App
