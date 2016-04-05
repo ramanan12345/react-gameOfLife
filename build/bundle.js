@@ -20682,7 +20682,7 @@ var Row = function Row(_ref) {
         key: i,
         className: (0, _classnames2.default)('cell', { alive: cell.alive }),
         onClick: function onClick() {
-          cell.alive = true;
+          cell.alive = !cell.alive;
           addCell();
         }
       });
@@ -20807,15 +20807,7 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    addLiveCell: function addLiveCell() {
-      console.log('hello');
-    }
-  };
-};
-
-var GridContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_game2.default);
+var GridContainer = (0, _reactRedux.connect)(mapStateToProps, null)(_game2.default);
 
 exports.default = GridContainer;
 
